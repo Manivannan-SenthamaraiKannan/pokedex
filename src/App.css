@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
 
 * {
-  padding: 0;
-  margin: 0;
   font-family: "Roboto", sans-serif;
 }
 
@@ -10,36 +8,74 @@ body {
   background-color: #fceec8;
 }
 
-.container {
-  width: 90%;
-  margin: auto;
-  padding-top: 100px;
-  display: flex;
-}
-
-.left-content,
-.right-content {
-  flex-basis: 50%;
-}
-
-.left-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
-  grid-gap: 2rem;
-}
-
-.card {
-  width: 300px;
-  background-color: whitesmoke;
-  border-radius: 1rem;
-  -webkit-border-radius: 1rem;
-  -moz-border-radius: 1rem;
-  -ms-border-radius: 1rem;
-  -o-border-radius: 1rem;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 005);
-  padding: 0;
+.search-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  justify-content: center;
+  padding-top: 3em;
+}
+
+.search-input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  width: 40em;
+}
+
+.search-button {
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.img-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.custom-loader {
+  width: 100px;
+  height: 100px;
+  display: grid;
+}
+
+.custom-loader::before,
+.custom-loader::after {
+  content: "";
+  grid-area: 1/1;
+  --c: radial-gradient(farthest-side, #766df4 92%, #0000);
+  background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%,
+    var(--c) 0 50%;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  animation: s2 2s infinite;
+}
+.custom-loader::before {
+  margin: 8px;
+  filter: hue-rotate(45deg);
+  background-size: 16px 16px;
+  animation-timing-function: linear;
+}
+
+@keyframes s2 {
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 3rem;
+  column-gap: 3rem;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
