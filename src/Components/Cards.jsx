@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PokeDetails from "./PokeDetails";
 
 const Cards = ({ pokemon, loading }) => {
   console.log(pokemon);
+  const [poke, setPoke] = useState();
+
+  const navigate = useNavigate();
+
+  const PokeDetail = (value) => {
+    console.log(`Details Button Clicked:${value}`);
+  };
 
   return (
     <>
@@ -35,6 +44,7 @@ const Cards = ({ pokemon, loading }) => {
                     paddingTop: "1rem",
                     paddingBottom: "1rem",
                   }}
+                  onClick={() => {}}
                 >
                   {item.types.map((type, index) => {
                     return (
@@ -45,6 +55,7 @@ const Cards = ({ pokemon, loading }) => {
                             index % 2 === 0 ? "btn btn-success" : "btn btn-info"
                           }
                           style={{ textTransform: "capitalize" }}
+                          disabled
                         >
                           {type.type.name}
                         </button>
@@ -52,6 +63,16 @@ const Cards = ({ pokemon, loading }) => {
                     );
                   })}
                 </div>
+                <hr />
+                <button
+                  type="button"
+                  className="btn btn-light"
+                  onClick={(e) => {
+                    setPoke(e.item.id);
+                  }}
+                >
+                  Details
+                </button>
               </div>
             </div>
           );

@@ -10,6 +10,7 @@ const Main = () => {
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon");
   const [nextUrl, setNextUrl] = useState();
   const [previousUrl, setPreviousUrl] = useState();
+  const [search, setSearch] = useState([]);
 
   const pokeInfo = async (data) => {
     setLoading(true);
@@ -34,6 +35,10 @@ const Main = () => {
     pokeInfo();
   }, [url]);
 
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
+  console.log(search);
   return (
     <>
       <div>
@@ -57,6 +62,7 @@ const Main = () => {
               type="text"
               className="search-input"
               placeholder="Search your Pokemon"
+              onChange={handleChange}
             />
             <button type="submit" className="search-button">
               Search
@@ -112,6 +118,11 @@ const Main = () => {
           {/* Pokemon Cards Section */}
           <div className="card-container">
             <Cards pokemon={pokeData} loading={loading} />
+          </div>
+          {/* Pokemon Details */}
+          <div className="pokedetails">
+            <h3>Pokemon Details</h3>
+            {/* {<PokeDetails />} */}
           </div>
         </div>
       </div>
